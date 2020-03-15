@@ -1,6 +1,8 @@
 boolean rightPressed,leftPressed,luz,downPressed,upPressed;
 PVector posCam;
 float camMov,z,x;
+PImage pokeball;
+PShape globo;
 
 PShape piramide;
 void setup(){
@@ -9,26 +11,31 @@ void setup(){
   z = width;
   camMov=0;
   posCam = new PVector(width/2,height/2,-2*width);
-
+  pokeball = loadImage("pokaball.png");
+  
+  beginShape();
+  globo = createShape(SPHERE,75);
+  globo.setStroke(255);
+  globo.setTexture(pokeball);
+  endShape();
 }
 
 
 void draw(){
   background(200);
   print(posCam.z+"\n");
-  if(luz){
-    float val = (float)x/(float)width*float(255);
-    ambientLight((int)val,0,0);
-    directionalLight(50,200,50,-1,0,0);
-    pointLight(204,153,0,x,height/2.0,400);
-  }
+  float val = (float)x/(float)width*float(255);
+  ambientLight((int)val,val,val);
+  directionalLight(50,50,50,-1,0,0);
+  pointLight(204,153,0,x,height/2.0,400);
   camera(posCam.x,posCam.y,posCam.z,x,height/2.0,0,0,1,0);
-  
+
   cameraControl();
-  
+  noStroke();
   pushMatrix();
     translate(width/4,height/2,width/4);
     sphere(75);
+    shape(globo);
   popMatrix();
   
   pushMatrix();
