@@ -11,83 +11,31 @@ void setup(){
   z = width;
   camMov=0;
   posCam = new PVector(width/2,height/2,-2*width);
-  pokeball = loadImage("pokaball.png");
-  
-  beginShape();
-  globo = createShape(SPHERE,75);
-  globo.setStroke(255);
-  globo.setTexture(pokeball);
-  endShape();
+  pokeball = loadImage("pokeball.png");
+  createPokeballShape();
 }
 
 
 void draw(){
   background(200);
-  print(posCam.z+"\n");
-  float val = (float)x/(float)width*float(255);
-  ambientLight((int)val,val,val);
-  directionalLight(50,50,50,-1,0,0);
-  pointLight(204,153,0,x,height/2.0,400);
-  camera(posCam.x,posCam.y,posCam.z,x,height/2.0,0,0,1,0);
-
+  setLight();
+  setCamera();
   cameraControl();
-  noStroke();
-  pushMatrix();
-    translate(width/4,height/2,width/4);
-    sphere(75);
-    shape(globo);
-  popMatrix();
-  
-  pushMatrix();
-    translate(3*width/4,height/2,width/4);
-    sphere(75);
-  popMatrix();
-  
-  pushMatrix();
-    translate(width/4,height/2,3*width/4);
-    sphere(75);
-  popMatrix();
-  
-  pushMatrix();
-    translate(3*width/4,height/2,3*width/4);
-    sphere(75);
-  popMatrix();
-  
-  pushMatrix();
-    translate(width/4,height/2,-width);
-    sphere(75);
-  popMatrix();
-  
-  pushMatrix();
-    translate(3*width/4,height/2,-width);
-    sphere(75);
-  popMatrix();
-
-  
-   pushMatrix();
-    translate(width/4,height/2,-width/2);
-    sphere(75);
-  popMatrix();
-  
-  pushMatrix();
-    translate(3*width/4,height/2,-width/2);
-    sphere(75);
-  popMatrix();
-
-  pushMatrix();
-    translate(width/4,height/2,-3*width/4);
-    sphere(75);
-  popMatrix();
-  
-  pushMatrix();
-    translate(3*width/4,height/2,-3*width/4);
-    sphere(75);
-  popMatrix();
-  
+  drawPokeballs();
   
 }
 
 
+
+void setCamera(){
+  camera(posCam.x,posCam.y,posCam.z,x,height/2.0,0,0,1,0);
+}
+void setLight(){
+  float val = (float)x/(float)width*float(255);
+  ambientLight((int)val,val,val);
+  directionalLight(50,50,50,-1,0,0);
+  pointLight(204,153,0,x,height/2.0,400);
+}
 
 void cameraControl(){
   if(rightPressed){
@@ -108,6 +56,80 @@ void cameraControl(){
   
   x = (width/2.0)*(1 + sin(radians(camMov)));
   z = -(width/2.0)*(1 + cos(radians(camMov)));
+  
+}
+
+void createPokeballShape(){
+  beginShape();
+  globo = createShape(SPHERE,75);
+  globo.setStroke(255);
+  globo.scale(1,1,1);
+  globo.setTexture(pokeball);
+  endShape();
+
+}
+void drawPokeballs(){
+  noStroke();
+  pushMatrix();
+    translate(width/4,height/2,width/4);
+    rotateY(radians(200));
+    shape(globo);
+  popMatrix();
+  
+  pushMatrix();
+    translate(3*width/4,height/2,width/4);
+    rotateY(radians(-20));
+    shape(globo);
+  popMatrix();
+  
+  pushMatrix();
+    translate(width/4,height/2,3*width/4);
+    rotateY(radians(200));
+    shape(globo);
+  popMatrix();
+  
+  pushMatrix();
+    translate(3*width/4,height/2,3*width/4);
+    rotateY(radians(-20));
+    shape(globo);
+  popMatrix();
+  
+  pushMatrix();
+    translate(width/4,height/2,-width);
+    rotateY(radians(200));
+    shape(globo);
+  popMatrix();
+  
+  pushMatrix();
+    translate(3*width/4,height/2,-width);
+    rotateY(radians(-20));
+    shape(globo);
+  popMatrix();
+
+  
+   pushMatrix();
+    translate(width/4,height/2,-width/2);
+    rotateY(radians(200));
+    shape(globo);
+  popMatrix();
+  
+  pushMatrix();
+    translate(3*width/4,height/2,-width/2);
+    rotateY(radians(-20));
+    shape(globo);
+  popMatrix();
+
+  pushMatrix();
+    translate(width/4,height/2,-3*width/4);
+    rotateY(radians(200));
+    shape(globo);
+  popMatrix();
+  
+  pushMatrix();
+    translate(3*width/4,height/2,-3*width/4);
+    rotateY(radians(-20));
+    shape(globo);
+  popMatrix();
   
 }
 
