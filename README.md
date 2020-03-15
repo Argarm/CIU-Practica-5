@@ -8,7 +8,7 @@ La descripcion del proyecto se establecia hacer uno de una camara, texturas y lu
 
 ## Como ejecutar el proyecto
 
-Principalmente hay un archivo raiz llamado [*Practica_5_CIU.pde*](Practica_5_CIU/Practica_5_CIU.pde) con abrir este fichero desde el IDE de processing y ejecutarlo tendriamos acceso a la aplicación
+Principalmente hay un archivo raiz llamado [*Practica_5_CIU.pde*](./CIU_Practica_5/CIU_Practica_5.pde) con abrir este fichero desde el IDE de processing y ejecutarlo tendriamos acceso a la aplicación
 
 ## Uso de la aplicación
 El uso de la aplicacion es sencillo con ejecutar el programa podríamos ver el sistema planetario en acción. Pero a su vez tenemos unos controles básicos:
